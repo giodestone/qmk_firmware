@@ -12,7 +12,7 @@
 #define MATRIX_COLS 6
 
 #define MATRIX_ROW_PINS { GP10, GP11, GP12, GP13, GP14, GP15, GP16, GP17, GP18, GP19, GP20, GP21, GP22, GP26, GP27, GP28 }
-#define MATRIX_COL_PINS { GP4, GP5, GP6, GP7, GP8, GP9 }
+#define MATRIX_COL_PINS { GP25, GP1, GP6, GP7, GP8, GP9 }
 
 /* OLED Config */
 #define OLED_DISPLAY_128X64
@@ -20,9 +20,13 @@
 #undef I2C_DRIVER
 #define I2C_DRIVER I2CD0
 #undef I2C1_SDA_PIN
-#define I2C1_SDA_PIN GP0
+#define I2C1_SDA_PIN GP4
 #undef I2C1_SCL_PIN
-#define I2C1_SCL_PIN GP1
+#define I2C1_SCL_PIN GP5
+
+#define OLED_BRIGHTNESS 128
+#define OLED_FADE_OUT
+
 // #define I2C1_CLOCK_SPEED 400000
 
 /*Encoder Config*/
@@ -45,19 +49,19 @@
 
 
 // OLED
-// pin 1 / gp0 - SDA
-// pin 2 / gp1 - SCL
+// pin 1 / gp0 - SDA // NNO PIN 6 xxx GP4 SDA
+// pin 2 / gp1 - SCL // NO PIN 7 xxx GP5 SCL
 // pin 3 - GND
-// pin 36/3V3 - VCC 
+// pin 36/3V3 - VCC
 
 // Rotary Encoder
 // NO NO NO NOW MATRIXd IN pin 4 / gp 2 - button
 // pin 4 / gp 2 - rot check 1
 // pin 5 / gp 3 - rot check 2
-// pin 8 / GND - GND                                                                                                                                                                                                                                                         
+// pin 8 / GND - GND
 
-// pin 6 / gp 4 - COL 1
-// pin 7 / gp 5 - COL 2
+// pin 6 / gp 4 - COL 1 // NO PIN 1 // NO GP25 (goodbye LED) xxx GP25
+// pin 7 / gp 5 - COL 2 // NO PIN 2 xx GP1
 // pin 9/ gp 6 - COL 3
 // pin 10/ gp 7 - COL 4
 // pin 11/ gp 8 - COL 5

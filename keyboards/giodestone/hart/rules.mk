@@ -1,7 +1,11 @@
-#BOARD = GENERIC_RP_RP2040 # maybe superceded in info.json?
+# BOARD = GENERIC_RP_RP2040 # maybe superceded in info.json?
+
+MCU=RP2040
+BOARD = GENERIC_RP_RP2040
 
 I2C_DRIVER_REQUIRED = yes
 
+OLED_DRIVER_ENABLE = yes
 OLED_ENABLE = yes
 OLED_DRIVER = ssd1306
 OLED_TRANSPORT = i2c
@@ -9,7 +13,12 @@ OPT_DEFS += -DHAL_USE_I2C=TRUE
 
 ENCODER_ENABLE = yes
 
-LTO_ENABLE = no # reduce binary size at compilation expense
+LTO_ENABLE = no # reduce binary size at compilation expense#
+
+SRC += honk/honk.c # to add C files.
+
+# for luna/dog
+WPM_ENABLE = yes
 
 # Build Options
 BOOTMAGIC_ENABLE = no       # Virtual DIP switch configuration(+1000)
