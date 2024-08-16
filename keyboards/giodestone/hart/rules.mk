@@ -15,7 +15,7 @@ ENCODER_ENABLE = yes
 
 LTO_ENABLE = no # reduce binary size at compilation expense#
 
-SRC += honk/honk.c # to add C files.
+# SRC += honk/honk.c # to add C files.
 
 # for luna/dog
 WPM_ENABLE = yes

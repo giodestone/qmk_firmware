@@ -25,7 +25,7 @@
 #define I2C1_SCL_PIN GP5
 
 #define OLED_BRIGHTNESS 128
-#define OLED_FADE_OUT
+//#define OLED_FADE_OUT // this causes memory corruption for some reason.
 
 // #define I2C1_CLOCK_SPEED 400000
 

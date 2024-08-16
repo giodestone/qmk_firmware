@@ -38,9 +38,10 @@
 // #include <print.h>
 
 
+#include "keycodes.h"
 #include QMK_KEYBOARD_H
 
-#include <honk/honk.h>
+//#include <honk/honk.h>
 
 // Defines names for use in layer keycodes and the keymap
 enum layer_names {
@@ -79,7 +80,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LEFT_CTRL, MO(_FN1), KC_LEFT_GUI, KC_LEFT_ALT, XXXXXXX, XXXXXXX, KC_SPACE, XXXXXXX, XXXXXXX, XXXXXXX, KC_RIGHT_ALT, KC_RIGHT_CTRL, KC_LEFT, KC_DOWN, KC_RIGHT, KC_F15
     ),
     [_FN1] = LAYOUT(
-        _______, KC_AUDIO_MUTE, _______, _______,  _______, _______, _______, _______, _______, _______, _______, KC_BRIGHTNESS_DOWN, KC_BRIGHTNESS_UP, _______, _______, _______,
+        _______, KC_MUTE, KC_VOLD, KC_VOLU, KC_MPRV, KC_MPLY, KC_MNXT, _______, _______, _______, _______, KC_BRIGHTNESS_DOWN, KC_BRIGHTNESS_UP, _______, _______, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
@@ -269,11 +270,13 @@ bool oled_task_user(void) {
 
     // render_luna((128/2)-(32/2), (64/2)-(32/2));
 
-    if (false)
+    if (true)
         render_luna(0, 0);
 
     // oled_clear();
-    honk_DrawHonk(0, 0);
+
+    // if (false)
+    //     honk_DrawHonk(0, 0);
 
     return false;
 }
@@ -282,7 +285,7 @@ bool oled_task_user(void) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record)
 {
-    honk_ProcessUserInput(keycode, record);
+    // honk_ProcessUserInput(keycode, record);
 
     switch (keycode) {
         case KC_LCTL:
@@ -308,7 +311,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
 
 void keyboard_post_init_user(void)
 {
-    honk_InitHonk();
+    // honk_InitHonk();
 }
 
 
