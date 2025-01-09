@@ -1,5 +1,7 @@
 # BOARD = GENERIC_RP_RP2040 # maybe superceded in info.json?
 
+#UART_DRIVER_REQUIRED = no # should allow pin 1/GP0 to be useful # does not
+
 MCU=RP2040
 BOARD = GENERIC_RP_RP2040
 

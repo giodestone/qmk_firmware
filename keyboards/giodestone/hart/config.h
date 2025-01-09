@@ -16,6 +16,9 @@
 
 /* OLED Config */
 #define OLED_DISPLAY_128X64
+#define OLED_BRIGHTNESS 128
+#define OLED_TIMEOUT 0 // disable timeout, enabling may cause memory corruption
+//#define OLED_FADE_OUT // this may case memory corruption for some reason.
 
 #undef I2C_DRIVER
 #define I2C_DRIVER I2CD0
@@ -24,8 +27,6 @@
 #undef I2C1_SCL_PIN
 #define I2C1_SCL_PIN GP5
 
-#define OLED_BRIGHTNESS 128
-//#define OLED_FADE_OUT // this causes memory corruption for some reason.
 
 // #define I2C1_CLOCK_SPEED 400000
 

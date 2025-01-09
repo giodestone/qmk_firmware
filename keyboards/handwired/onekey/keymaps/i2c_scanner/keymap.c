@@ -27,7 +27,7 @@ void do_scan(void) {
             dprintf("  I2C device found at address 0x%02X\n", address);
             nDevices++;
         } else {
-            // dprintf("  Unknown error (%u) at address 0x%02X\n", error, address);
+            dprintf("  Unknown error (%u) at address 0x%02X\n", error, address);
         }
     }
 
