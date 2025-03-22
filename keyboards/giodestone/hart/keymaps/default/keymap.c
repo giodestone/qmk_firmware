@@ -38,58 +38,54 @@
 // #include <print.h>
 
 
-#include "keycodes.h"
 #include QMK_KEYBOARD_H
 #include <quantum.h>
+#include "keycodes.h"
+#include "config.h"
 
 //#include <honk/honk.h>
 
 // Defines names for use in layer keycodes and the keymap
 enum layer_names {
     _QWERTY = 0,
-    _FN1 = 1,
-    // _FN1,
+    _FN1 = 1
     // _FN2
 };
 
 
 
-
+/* Full Keymap - From config.h
+    +---------+--------+----+-----+-----+-------+-------+-------+-------+-------+-------+------+-------+--------+--------+-------+
+    | Row/Col |   1    | 2  |  3  |  4  |   5   |   6   |   7   |   8   |   9   |  10   |  11  |  12   |   13   |   14   |  15   |
+    +---------+--------+----+-----+-----+-------+-------+-------+-------+-------+-------+------+-------+--------+--------+-------+
+    |       6 | ESC    | F1 | F2  | F3  | F4    | F5    | F6    | F7    | F8    | F9    | F10  | F11   | F12    | PrtSc  | !Del  |
+    |       5 | `      | 1  | 2   | 3   | 4     | 5     | 6     | 7     | 8     | 9     | 0    | -     | =      | BkSp   | Home  |
+    |       4 | Tab    | Q  | W   | E   | R     | T     | Y     | U     | I     | O     | P    | [     | ]      | !Ins   | PgUp  |
+    |       3 | Caps   | A  | S   | D   | F     | G     | H     | J     | K     | L     | ;    | '     | #      | Return | PgDn  |
+    |       2 | LShift | \  | Z   | X   | C     | V     | B     | N     | M     | ,     | .    | /     | RShift | UP     | End   |
+    |       1 | LCtrl  | Fn | Win | Alt | !NULL | !Mac3 | Space | !Mac2 | !Mac1 | !PotB | RAlt | RCtrl | LEFT   | DOWN   | RIGHT |
+    +---------+--------+----+-----+-----+-------+-------+-------+-------+-------+-------+------+-------+--------+--------+-------+
+        KC_ESC,        KC_F1,               KC_F2,       KC_F3,       KC_F4,   KC_F5,    KC_F6,    KC_F7,   KC_F8,    KC_F9,               KC_F10,       KC_F11,        KC_F12,         KC_PRINT_SCREEN, KC_DEL,
+    */
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    // default
-    /* DEFAULT KEYMAP - Items with a '!' prefix indicate that something may not be obvious
-      +---------+--------+----+-----+-----+-------+-------+-------+-------+-------+-------+------+-------+--------+--------+-------+---------+
-      | Row/Col |   1    | 2  |  3  |  4  |   5   |   6   |   7   |   8   |   9   |  10   |  11  |  12   |   13   |   14   |  15   |   16    |
-      +---------+--------+----+-----+-----+-------+-------+-------+-------+-------+-------+------+-------+--------+--------+-------+---------+
-      |       6 | ESC    | F1 | F2  | F3  | F4    | F5    | F6    | F7    | F8    | F9    | F10  | F11   | F12    | PrtSc  | !Del  | !NULL   |
-      |       5 | `      | 1  | 2   | 3   | 4     | 5     | 6     | 7     | 8     | 9     | 0    | -     | =      | BkSp   | Home  | PotBtn  |
-      |       4 | Tab    | Q  | W   | E   | R     | T     | Y     | U     | I     | O     | P    | [     | ]      | !Ins   | PgUp  | !NULL   |
-      |       3 | Caps   | A  | S   | D   | F     | G     | H     | J     | K     | L     | ;    | '     | #      | Return | PgDn  | Macro 1 |
-      |       2 | LShift | \  | Z   | X   | C     | V     | B     | N     | M     | ,     | .    | /     | RShift | UP     | End   | Macro 2 |
-      |       1 | LCtrl  | Fn | Win | Alt | !NULL | !NULL | Space | !NULL | !NULL | !NULL | RAlt | RCtrl | LEFT   | DOWN   | RIGHT | Macro 3 |
-      +---------+--------+----+-----+-----+-------+-------+-------+-------+-------+-------+------+-------+--------+--------+-------+---------+
-      */
-
-    /*TODO: POT BUTTON AND FN ARE NOT DONE*/
-
+    // Base Layer
     [_QWERTY] = LAYOUT(
-        KC_ESC,        KC_F1,              KC_F2,       KC_F3,       KC_F4,   KC_F5,   KC_F6,    KC_F7,   KC_F8,   KC_F9,    KC_F10,       KC_F11,        KC_F12,         KC_PRINT_SCREEN, KC_DEL,   XXXXXXX,
-        KC_GRV,        KC_1,               KC_2,        KC_3,        KC_4,    KC_5,    KC_6,     KC_7,    KC_8,    KC_9,     KC_0,         KC_MINS,       KC_EQL,         KC_BSPC,         KC_HOME,  KC_MEDIA_PLAY_PAUSE,
-        KC_TAB,        KC_Q,               KC_W,        KC_E,        KC_R,    KC_T,    KC_Y,     KC_U,    KC_I,    KC_O,     KC_P,         KC_LBRC,       KC_RBRC,        KC_INSERT,       KC_PGUP,  XXXXXXX,
-        KC_CAPS,       KC_A,               KC_S,        KC_D,        KC_F,    KC_G,    KC_H,     KC_J,    KC_K,    KC_L,     KC_SEMICOLON, KC_QUOTE,      KC_NONUS_HASH,  KC_ENTER,        KC_PGDN,  KC_F13,
-        KC_LEFT_SHIFT, KC_NONUS_BACKSLASH, KC_Z,        KC_X,        KC_C,    KC_V,    KC_B,     KC_N,    KC_M,    KC_COMMA, KC_DOT,       KC_SLASH,      KC_RIGHT_SHIFT, KC_UP,           KC_END,   KC_F14,
-        KC_LEFT_CTRL,  XXXXXXX,            KC_LEFT_GUI, KC_LEFT_ALT, XXXXXXX, XXXXXXX, KC_SPACE, XXXXXXX, XXXXXXX, XXXXXXX,  KC_RIGHT_ALT, KC_RIGHT_CTRL, KC_LEFT,        KC_DOWN,         KC_RIGHT, KC_F15
-    /*  KC_LEFT_CTRL,  MO(_FN1),           KC_LEFT_GUI, KC_LEFT_ALT, XXXXXXX, XXXXXXX, KC_SPACE, XXXXXXX, XXXXXXX, XXXXXXX,  KC_RIGHT_ALT, KC_RIGHT_CTRL, KC_LEFT,        KC_DOWN,         KC_RIGHT, KC_F15*/
+        KC_GRV,        KC_1,                KC_2,        KC_3,        KC_4,    KC_5,     KC_6,     KC_7,    KC_8,     KC_9,                KC_0,         KC_MINS,       KC_EQL,         KC_BSPC,         KC_HOME,
+        KC_TAB,        KC_Q,                KC_W,        KC_E,        KC_R,    KC_T,     KC_Y,     KC_U,    KC_I,     KC_O,                KC_P,         KC_LBRC,       KC_RBRC,        KC_INSERT,       KC_PGUP,
+        KC_CAPS,       KC_A,                KC_S,        KC_D,        KC_F,    KC_G,     KC_H,     KC_J,    KC_K,     KC_L,                KC_SEMICOLON, KC_QUOTE,      KC_NONUS_HASH,  KC_ENTER,        KC_PGDN,
+        KC_LEFT_SHIFT, KC_NONUS_BACKSLASH,  KC_Z,        KC_X,        KC_C,    KC_V,     KC_B,     KC_N,    KC_M,     KC_COMMA,            KC_DOT,       KC_SLASH,      KC_RIGHT_SHIFT, KC_UP,           KC_END,
+        KC_LEFT_CTRL,  MO(_FN1),            KC_LEFT_GUI, KC_LEFT_ALT, XXXXXXX, KC_F15,   KC_SPACE, KC_F14,  KC_F13,  KC_MEDIA_PLAY_PAUSE,  KC_RIGHT_ALT, KC_RIGHT_CTRL, KC_LEFT,        KC_DOWN,         KC_RIGHT
+        _______, KC_MUTE, KC_VOLD, KC_VOLU, KC_MPRV, KC_MPLY,          KC_MNXT, _______, _______, _______, _______, KC_BRIGHTNESS_DOWN, KC_BRIGHTNESS_UP, _______, _______,
     ),
-    [_FN1] = LAYOUT(
-        _______, KC_MUTE, KC_VOLD, KC_VOLU, KC_MPRV, KC_MPLY, KC_MNXT, _______, _______, _______, _______, KC_BRIGHTNESS_DOWN, KC_BRIGHTNESS_UP, _______, _______, _______,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, QK_BOOTLOADER
-    )
 
+    // Fn Layer
+    [_FN1] = LAYOUT(
+        _______, _______, _______, _______, _______, _______,          _______, _______, _______, _______, _______, _______,            _______,          _______, _______,
+        _______, _______, _______, _______, _______, _______,          _______, _______, _______, _______, _______, _______,            _______,          _______, _______,
+        _______, _______, _______, _______, _______, _______,          _______, _______, _______, _______, _______, _______,            _______,          _______, _______,
+        _______, _______, _______, _______, _______, _______,          _______, _______, _______, _______, _______, _______,            _______,          _______, _______,
+        _______, _______, _______, _______, _______, QK_BOOTLOADER,    _______, _______, _______, _______, _______,            _______,          _______, _______, _______
+    )
 };
 
 /* KEYBOARD PET START */
@@ -115,7 +111,6 @@ led_t led_usb_state;
 bool isSneaking = false;
 bool isJumping  = false;
 bool showedJump = true;
-
 
 void renderLine(const char* fullPicture, int width, int height)
 {
@@ -290,16 +285,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
 {
     // honk_ProcessUserInput(keycode, record);
 
-    switch (keycode) {
+    // #ifdef CONSOLE_ENABLE
         case KC_LCTL:
+    //     uprintf("KL: kc: 0x%04X, col: %2u, row: %2u, pressed: %u, time: %5u, int: %u, count: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed, record->event.time, record->tap.interrupted, record->tap.count);
+    // #endif
+
+    switch (keycode) {
         case KC_RCTL:
             if (record->event.pressed) {
                 isSneaking = true;
+        case KC_SPC:
             } else {
                 isSneaking = false;
             }
             break;
-        case KC_SPC:
             if (record->event.pressed) {
                 isJumping  = true;
                 showedJump = false;
@@ -315,6 +314,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
 void keyboard_post_init_user(void)
 {
     // honk_InitHonk();
+    // debug_enable=true;
+    // debug_matrix=true;
 }
 
 
