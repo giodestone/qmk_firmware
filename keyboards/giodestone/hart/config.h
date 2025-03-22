@@ -31,9 +31,9 @@
 // #define I2C1_CLOCK_SPEED 400000
 
 /*Encoder Config*/
-// #undef ENCODERS_PAD_A
+#undef ENCODERS_PAD_A
 #define ENCODERS_PAD_A { GP3 } // Inverted, as clockwise should be +volume, and counterclockwise should be -vol
-// #undef ENCODERS_PAD_B
+#undef ENCODERS_PAD_B
 #define ENCODERS_PAD_B { GP2 }
 
 

@@ -12,7 +12,7 @@
     },
 
     "layouts": {
-        "LAYOUT": {
+        "LAYOUT_default": {
             "layout": [
                 {"matrix": [ 0 , 5 ], "x": 0, "y": 0},
                 {"matrix": [ 1 , 5 ], "x": 0, "y": 0},
